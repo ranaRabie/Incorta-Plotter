@@ -13,17 +13,30 @@ class Provider extends Component {
         this.setState({chartXAxisData: Xaxis});
         this.setState({chartYAxisData: Yaxis});
     }
-    getChartData(measure, dimension){
+    async getChartData(measure, dimension){
         const data = {
             "measures": measure,
             "dimension": dimension
         }
-        console.log(data);
         const $this = this;
-        axios.post('https://plotter-task.herokuapp.com/data', data)
+        await axios.post('https://plotter-task.herokuapp.com/data', data)
         .then(function (response) {
-            console.log(response.data);
-            $this.updateChart(response.data[0].values, response.data[1].values);
+            const resData = response.data;
+
+            let datasets =[];
+
+            for(var i = 1; i < resData.length; i++){
+                const $thisName = resData[i].name;
+                const $thisValues = resData[i].values;
+                datasets.push({
+                    label: $thisName,
+                    data: $thisValues,
+                    fill: false,
+                    borderColor: "rgba(75,192,192,1)"
+                });
+            }
+            
+            $this.updateChart(resData[0].values, datasets);
         })
         .catch(function (error) {
             console.log(error);

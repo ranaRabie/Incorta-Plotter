@@ -17,15 +17,7 @@ const Chart = () => {
       <div>
       <Line data={{
         labels: context.chartXAxisData,
-        datasets: [
-          {
-            label: context.currentMeasure,
-            data: context.chartYAxisData,
-            fill: false,
-            backgroundColor: 'rgb(255, 99, 132)',
-            borderColor: 'rgba(255, 99, 132, 0.2)',
-          },
-        ],
+        datasets: context.chartYAxisData,
       }} options={options} />
       </div>
     );
