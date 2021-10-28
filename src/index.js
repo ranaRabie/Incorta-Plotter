@@ -4,6 +4,8 @@ import './index.css';
 import Home from './Containers/Home';
 import Provider from './MyProvider';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
