@@ -41,6 +41,7 @@ class Provider extends Component {
                         if(type === 'dimension'){
                             if(this.state.currentDimension !== ''){
                                 alert('clear Dimension first');
+                                return false;
                             }else{
                                 if(name !== this.state.currentDimension){
                                     this.setState({ currentDimension: name});
@@ -49,6 +50,7 @@ class Provider extends Component {
                         }else if(type === 'measure'){
                             if(this.state.currentMeasure.includes(name)){
                                 alert('exist before');
+                                return false;
                             }else{
                                 this.state.currentMeasure.push(name);
                             }
