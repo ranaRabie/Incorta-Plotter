@@ -4,15 +4,27 @@ import Context from '../../MyContext';
 function Form () {
     const context = useContext(Context);
     return (
-        <div>
-            <form action="">
-                <label>Dimension</label>
-                <input type="text" value={context.currentDimension} onChange={() => console.log('change')} />
-                <button type="button" onClick={() => context.clearDimension()}>clear</button>
-                <label>Measure</label>
-                <input type="text" value={context.currentMeasure}  onChange={() => console.log('change')} />
-                <button type="button" onClick={() => context.clearMeasures()}>clear</button>
-            </form>
+        <div className="py-2 px-3 current-items-blk">
+            <div className="row">
+                <div className="col-md-6">
+                    <label>Dimension</label>
+                    <div class="d-flex">
+                        <div class="current-items-box">
+                            {context.currentDimension ? <div className="current-item">{context.currentDimension}</div> : ''}
+                        </div>
+                        <button type="button" className="btn btn-danger clear-btn" onClick={() => context.clearDimension()}>clear</button>
+                    </div>
+                </div>
+                <div className="col-md-6">
+                    <label>Measure</label>
+                    <div class="d-flex">
+                        <div class="current-items-box">
+                            {context.currentMeasure.map(measure => <div className="current-item">{measure}</div>)}
+                        </div>
+                        <button type="button" className="btn btn-danger clear-btn" onClick={() => context.clearMeasures()}>clear</button>
+                    </div>            
+                </div>
+            </div>
         </div>
     );
     
