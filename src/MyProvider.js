@@ -7,13 +7,29 @@ class Provider extends Component {
         currentDimension: '',
         currentMeasure: [],
     };
+    getChartData(measure, dimension){
+        const data = {
+            "measures": measure,
+            "dimension": dimension
+        }
+        console.log(data);
+        const $this = this;
+        axios.post('https://plotter-task.herokuapp.com/data', data)
+        .then(function (response) {
+            console.log(response.data);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+    }
     render() {
         return (
             <Context.Provider
                 value={{
                     currentMeasure: this.state.currentMeasure,
                     currentDimension: this.state.currentDimension,
-
+                    chartXAxisData: this.state.chartXAxisData,
+                    chartYAxisData: this.state.chartYAxisData,
                     getItems: (type, name) => {
                         if(type === 'dimension'){
                             if(this.state.currentDimension !== ''){
@@ -29,6 +45,10 @@ class Provider extends Component {
                             }else{
                                 this.state.currentMeasure.push(name);
                             }
+                        }
+
+                        if(this.state.currentDimension !== '' && this.state.currentMeasure.length !==0){
+                            this.getChartData(this.state.currentMeasure, this.state.currentDimension);    
                         }
 
                     },
