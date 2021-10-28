@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import Context from './MyContext';
 import axios from 'axios';
-
 class Provider extends Component {
     state = {
         currentDimension: '',
@@ -67,17 +66,30 @@ class Provider extends Component {
                                 alert('exist before');
                                 return false;
                             }else{
+                                // const $measures = this.state.currentMeasure; // Cloning Measures
+                                // $measures.push(name); // Push New Measure
+                                // this.setState({currentMeasure: $measures}); // Update State
                                 this.state.currentMeasure.push(name);
                             }
                         }
-
                         if(this.state.currentDimension !== '' && this.state.currentMeasure.length !== 0){ // If Dimension and Measure/Measures exist 
                             // Get New Chart Data
                             this.getChartData(this.state.currentMeasure, this.state.currentDimension);    
                         }
                         
                     },
-                    
+                    // Clear Dimension
+                    clearDimension: () => {
+                        this.setState({currentDimension: ''});
+                        this.setState({chartXAxisData: []});
+                        this.setState({chartYAxisData: []});
+                    },
+                    // Clear Measures
+                    clearMeasures: () => {
+                        this.setState({currentMeasure: []});
+                        this.setState({chartXAxisData: []});
+                        this.setState({chartYAxisData: []});
+                    }
                 }}
             >
                 {this.props.children}
