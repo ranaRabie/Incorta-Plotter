@@ -19,7 +19,9 @@ const List = () => {
     }, []);
     
     return (
-      <div>
+      <div className="list-wrapper">
+        <h3>List</h3>
+        <p>click on an item to select it</p>
         <ul>
           {List ? (
             List?.map((item) => ( // List Loop
