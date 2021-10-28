@@ -1,9 +1,9 @@
 import React, { useContext } from 'react';
 import { Line } from 'react-chartjs-2';
-
-
+import Context from '../../MyContext';
 
 const Chart = () => {
+    const context = useContext(Context);
 
     const options = {
       scales: {
@@ -13,28 +13,20 @@ const Chart = () => {
       }
     };
 
-    const data = {
-      labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun"],
-      datasets: [
-        {
-          label: "First dataset",
-          data: [33, 53, 85, 41, 44, 65],
-          fill: true,
-          backgroundColor: "rgba(75,192,192,0.2)",
-          borderColor: "rgba(75,192,192,1)"
-        },
-        {
-          label: "Second dataset",
-          data: [33, 25, 35, 51, 54, 76],
-          fill: false,
-          borderColor: "#742774"
-        }
-      ]
-    };
-
     return(
       <div>
-      <Line data={data} options={options} />
+      <Line data={{
+        labels: context.chartXAxisData,
+        datasets: [
+          {
+            label: context.currentMeasure,
+            data: context.chartYAxisData,
+            fill: false,
+            backgroundColor: 'rgb(255, 99, 132)',
+            borderColor: 'rgba(255, 99, 132, 0.2)',
+          },
+        ],
+      }} options={options} />
       </div>
     );
 

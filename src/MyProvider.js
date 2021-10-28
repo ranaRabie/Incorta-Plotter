@@ -6,7 +6,13 @@ class Provider extends Component {
     state = {
         currentDimension: '',
         currentMeasure: [],
+        chartXAxisData: [],
+        chartYAxisData: [],
     };
+    updateChart(Xaxis, Yaxis){
+        this.setState({chartXAxisData: Xaxis});
+        this.setState({chartYAxisData: Yaxis});
+    }
     getChartData(measure, dimension){
         const data = {
             "measures": measure,
@@ -17,6 +23,7 @@ class Provider extends Component {
         axios.post('https://plotter-task.herokuapp.com/data', data)
         .then(function (response) {
             console.log(response.data);
+            $this.updateChart(response.data[0].values, response.data[1].values);
         })
         .catch(function (error) {
             console.log(error);
@@ -50,7 +57,7 @@ class Provider extends Component {
                         if(this.state.currentDimension !== '' && this.state.currentMeasure.length !==0){
                             this.getChartData(this.state.currentMeasure, this.state.currentDimension);    
                         }
-
+                        
                     },
                     
                 }}
