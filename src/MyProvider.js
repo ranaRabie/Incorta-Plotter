@@ -13,6 +13,25 @@ class Provider extends Component {
                 value={{
                     currentMeasure: this.state.currentMeasure,
                     currentDimension: this.state.currentDimension,
+
+                    getItems: (type, name) => {
+                        if(type === 'dimension'){
+                            if(this.state.currentDimension !== ''){
+                                alert('clear Dimension first');
+                            }else{
+                                if(name !== this.state.currentDimension){
+                                    this.setState({ currentDimension: name});
+                                } 
+                            }
+                        }else if(type === 'measure'){
+                            if(this.state.currentMeasure.includes(name)){
+                                alert('exist before');
+                            }else{
+                                this.state.currentMeasure.push(name);
+                            }
+                        }
+
+                    },
                     
                 }}
             >
