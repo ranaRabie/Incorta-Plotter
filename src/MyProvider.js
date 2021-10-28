@@ -9,10 +9,12 @@ class Provider extends Component {
         chartXAxisData: [],
         chartYAxisData: [],
     };
+    // Update Chart with New Data
     updateChart(Xaxis, Yaxis){
         this.setState({chartXAxisData: Xaxis});
         this.setState({chartYAxisData: Yaxis});
     }
+    // Fetch to get Chart Data with current Measures and Dimension
     async getChartData(measure, dimension){
         const data = {
             "measures": measure,
@@ -21,13 +23,14 @@ class Provider extends Component {
         const $this = this;
         await axios.post('https://plotter-task.herokuapp.com/data', data)
         .then(function (response) {
-            const resData = response.data;
+            const resData = response.data; // Response Data
 
             let datasets =[];
-
+            // Loop over Responsove Data Without 0 Index To get Datasets of multiple Measures
             for(var i = 1; i < resData.length; i++){
-                const $thisName = resData[i].name;
-                const $thisValues = resData[i].values;
+                const $thisName = resData[i].name; // Measure Name
+                const $thisValues = resData[i].values;  // Measure Value
+                // Push to Datasets Array
                 datasets.push({
                     label: $thisName,
                     data: $thisValues,
@@ -36,7 +39,7 @@ class Provider extends Component {
                 });
             }
             
-            $this.updateChart(resData[0].values, datasets);
+            $this.updateChart(resData[0].values, datasets); // Update Chart with New Data
         })
         .catch(function (error) {
             console.log(error);
@@ -50,18 +53,17 @@ class Provider extends Component {
                     currentDimension: this.state.currentDimension,
                     chartXAxisData: this.state.chartXAxisData,
                     chartYAxisData: this.state.chartYAxisData,
+                    // Get List Items of Measures and Dimensions
                     getItems: (type, name) => {
                         if(type === 'dimension'){
-                            if(this.state.currentDimension !== ''){
+                            if(this.state.currentDimension !== ''){ // If Dimesion already have a value
                                 alert('clear Dimension first');
                                 return false;
                             }else{
-                                if(name !== this.state.currentDimension){
-                                    this.setState({ currentDimension: name});
-                                } 
+                                this.setState({ currentDimension: name});
                             }
                         }else if(type === 'measure'){
-                            if(this.state.currentMeasure.includes(name)){
+                            if(this.state.currentMeasure.includes(name)){ // If Measure alredy exists in Measures Box
                                 alert('exist before');
                                 return false;
                             }else{
@@ -69,7 +71,8 @@ class Provider extends Component {
                             }
                         }
 
-                        if(this.state.currentDimension !== '' && this.state.currentMeasure.length !==0){
+                        if(this.state.currentDimension !== '' && this.state.currentMeasure.length !== 0){ // If Dimension and Measure/Measures exist 
+                            // Get New Chart Data
                             this.getChartData(this.state.currentMeasure, this.state.currentDimension);    
                         }
                         
