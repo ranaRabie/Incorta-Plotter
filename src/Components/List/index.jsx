@@ -23,15 +23,12 @@ const List = () => {
         <h3>List</h3>
         <p>click on an item to select it</p>
         <ul>
-          {List ? (
-            List?.map((item) => ( // List Loop
+          {List?.map((item) => ( // List Loop
               <li key={item.name} >
-                <a onClick={() => context.getItems(item.function, item.name)}>{item.name}</a>
+                <a onClick={() => context.getItems(item.function, item.name)} className={`${context.currentDimension === item.name || context.currentMeasure.includes(item.name) ? "disabled" : ""}`}>{item.name}</a>
               </li>
             ))
-          ) : (
-            <div>No Data Found</div> // If No Data
-          )}
+          }
         </ul>
        
       </div>

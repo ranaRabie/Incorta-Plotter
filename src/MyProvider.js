@@ -72,10 +72,7 @@ class Provider extends Component {
                                 // this.state.currentMeasure.push(name);
                             }
                         }
-                        console.log(this.state.currentDimension);
-                        console.log(this.state.currentMeasure);
                         if(this.state.currentDimension !== '' && this.state.currentMeasure.length !== 0){ // If Dimension and Measure/Measures exist 
-                            console.log('here');
                             // Get New Chart Data
                             this.getChartData(this.state.currentMeasure, this.state.currentDimension);    
                         }

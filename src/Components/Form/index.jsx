@@ -8,8 +8,8 @@ function Form () {
             <div className="row">
                 <div className="col-md-6">
                     <label>Dimension</label>
-                    <div class="d-flex">
-                        <div class="current-items-box">
+                    <div className="d-flex">
+                        <div className="current-items-box">
                             {context.currentDimension ? <div className="current-item">{context.currentDimension}</div> : ''}
                         </div>
                         <button type="button" className="btn btn-danger clear-btn" onClick={() => context.clearDimension()}>clear</button>
@@ -17,9 +17,9 @@ function Form () {
                 </div>
                 <div className="col-md-6">
                     <label>Measure</label>
-                    <div class="d-flex">
-                        <div class="current-items-box">
-                            {context.currentMeasure.map(measure => <div className="current-item">{measure}</div>)}
+                    <div className="d-flex">
+                        <div className="current-items-box">
+                            {context.currentMeasure.map(measure => <div key={measure} className="current-item">{measure}</div>)}
                         </div>
                         <button type="button" className="btn btn-danger clear-btn" onClick={() => context.clearMeasures()}>clear</button>
                     </div>            

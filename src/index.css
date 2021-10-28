@@ -1,7 +1,12 @@
 .list-wrapper{
   background-color: #eee;
-  padding: 1rem;
+  padding: 1rem 0;
   min-height: 100%;
+}
+.list-wrapper h3,
+.list-wrapper p,
+.list-wrapper a{
+  padding: 0 1rem;
 }
 .list-wrapper ul{margin: 0;padding: 0;}
 .list-wrapper ul li{
@@ -11,7 +16,18 @@
 .list-wrapper ul li a{
   display: block;
   width: 100%;
-  padding: 0.3rem 0;
+  padding: 0.3rem 1rem;
+  text-decoration: none;
+  color: #444;
+  transition: all 0.5s ease;
+}
+.list-wrapper ul li a:hover{
+  color: #777;
+}
+.list-wrapper ul li a.disabled{
+  pointer-events: none;
+  background-color: rgba(0,0,0,0.1);
+  color: rgba(0,0,0,0.3);
 }
 label{
   display: block;
@@ -39,6 +55,6 @@ label{
   min-height: calc(100vh - 72px);
 }
 
-.bg-primary {
+.bg-primary.main-header {
   background-color: rgba(75,192,192,1)!important;
 }

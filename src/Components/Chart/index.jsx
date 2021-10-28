@@ -16,7 +16,7 @@ const Chart = () => {
     
     return(
       <div className="chart-wrapper px-3 pt-2"> 
-      {context.currentDimension != '' && context.currentMeasure != [] ? (
+      {context.currentDimension !== '' && context.currentMeasure !== [] ? (
         <Line data={{
           labels: context.chartXAxisData,
           datasets: context.chartYAxisData,
