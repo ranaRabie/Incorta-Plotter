@@ -34,7 +34,8 @@ class Provider extends Component {
                     label: $thisName,
                     data: $thisValues,
                     fill: false,
-                    borderColor: "rgba(75,192,192,1)"
+                    borderColor: "rgb(49, 77, 92)"
+                    // borderColor: "rgba(75,192,192,1)"
                 });
             }
             

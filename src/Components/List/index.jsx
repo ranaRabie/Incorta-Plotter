@@ -25,7 +25,7 @@ const List = () => {
         <ul>
           {List?.map((item) => ( // List Loop
               <li key={item.name} >
-                <a onClick={() => context.getItems(item.function, item.name)} className={`${context.currentDimension === item.name || context.currentMeasure.includes(item.name) ? "disabled" : ""}`}>{item.name}</a>
+                <span onClick={() => context.getItems(item.function, item.name)} className={`${context.currentDimension === item.name || context.currentMeasure.includes(item.name) ? "disabled" : ""}`}>{item.name}</span>
               </li>
             ))
           }

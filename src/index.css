@@ -5,7 +5,7 @@
 }
 .list-wrapper h3,
 .list-wrapper p,
-.list-wrapper a{
+.list-wrapper span{
   padding: 0 1rem;
 }
 .list-wrapper ul{margin: 0;padding: 0;}
@@ -13,7 +13,7 @@
   cursor: pointer;
   list-style-type: none;
 }
-.list-wrapper ul li a{
+.list-wrapper ul li span{
   display: block;
   width: 100%;
   padding: 0.3rem 1rem;
@@ -21,10 +21,10 @@
   color: #444;
   transition: all 0.5s ease;
 }
-.list-wrapper ul li a:hover{
+.list-wrapper ul li span:hover{
   color: #777;
 }
-.list-wrapper ul li a.disabled{
+.list-wrapper ul li span.disabled{
   pointer-events: none;
   background-color: rgba(0,0,0,0.1);
   color: rgba(0,0,0,0.3);
@@ -56,5 +56,6 @@ label{
 }
 
 .bg-primary.main-header {
-  background-color: rgba(75,192,192,1)!important;
+  /* background-color: rgba(75,192,192,1)!important; */
+  background-color: rgb(49, 77, 92)!important;
 }
