@@ -33,7 +33,7 @@ const List = () => {
             )
           }
         </ul>
-        <p className="mb-1 mt-3">click on an item to select Measure</p>
+        <p className="mb-1 mt-3">click on an item to select Measure <small className="d-block">(Multiple Select available)</small></p>
         <ul>
           {List?.map((item) => {
             return item.function === "measure" ?
