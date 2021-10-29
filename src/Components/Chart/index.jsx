@@ -12,7 +12,7 @@ const Chart = () => {
             text: `${context.currentDimension} Chart`,
             position: 'bottom',
             padding: {
-                top: 20
+                top: 0
             },
             font:{
               size: 20,
