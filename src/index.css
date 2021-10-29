@@ -8,6 +8,13 @@
 .list-wrapper span{
   padding: 0 1rem;
 }
+.list-wrapper p{
+    padding-top: 1rem;
+    font-weight: bold;
+    font-size: .9rem;
+    border-top: 1px solid rgb(0, 0, 0, 0.16);
+    text-transform: capitalize;
+}
 .list-wrapper ul{margin: 0;padding: 0;}
 .list-wrapper ul li{
   cursor: pointer;
