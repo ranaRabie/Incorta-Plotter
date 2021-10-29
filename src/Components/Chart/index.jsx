@@ -6,9 +6,17 @@ const Chart = () => {
     const context = useContext(Context);
 
     const options = {
-      scales: {
-        y: {
-          beginAtZero: true
+      plugins: {
+        title: {
+            display: true,
+            text: `${context.currentDimension} Chart`,
+            position: 'bottom',
+            padding: {
+                top: 20
+            },
+            font:{
+              size: 20,
+            }
         }
       }
     };
